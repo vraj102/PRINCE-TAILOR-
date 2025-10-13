@@ -1,48 +1,1105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prince Tailor</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Premium custom tailoring for women's clothing in Mumbai. Bespoke dresses, wedding wear, and designer outfits.">
+  <title>Prince Tailor | Luxury Women's Tailoring in Mumbai</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1A237E;
+      --primary-dark: #0D47A1;
+      --primary-light: #3949AB;
+      --secondary: #FFC107;
+      --secondary-dark: #FFA000;
+      --text: #212121;
+      --text-light: #757575;
+      --light-bg: #F5F5F5;
+      --white: #FFFFFF;
+      --black: #000000;
+      --gray: #EEEEEE;
+      --dark-gray: #BDBDBD;
+      --transition: all 0.3s ease;
+    }
+
+    /* ====== Base Styles ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      background-color: var(--light-bg);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: var(--primary-dark);
+      line-height: 1.3;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-subtitle {
+      font-size: 18px;
+      color: var(--secondary-dark);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
+
+    .section-title {
+      font-size: 36px;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 15px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--secondary);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background-color: var(--secondary);
+      color: var(--primary-dark);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--secondary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ====== Header ====== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 0;
+      background-color: var(--primary);
+      z-index: 1000;
+      transition: var(--transition);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--secondary);
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 1px;
+    }
+
+    /* ====== Navigation ====== */
+    .nav-links ul {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links ul li {
+      margin-left: 30px;
+    }
+
+    .nav-links ul li a {
+      color: var(--white);
+      font-weight: 500;
+      font-size: 16px;
+      position: relative;
+    }
+
+    .nav-links ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--secondary);
+      transition: var(--transition);
+    }
+
+    .nav-links ul li a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links ul li a.btn-primary {
+      padding: 10px 20px;
+    }
+
+    .nav-links ul li a.btn-primary::after {
+      display: none;
+    }
+
+    /* ====== Menu Toggle ====== */
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+      padding: 10px;
+    }
+
+    .menu-bar {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background-color: var(--white);
+      margin: 5px 0;
+      transition: var(--transition);
+    }
+
+    /* Active state for menu toggle */
+    .menu-toggle.active .menu-bar:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle.active .menu-bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active .menu-bar:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* ====== Hero Section ====== */
+    .hero {
+      height: 100vh;
+      min-height: 700px;
+      background: linear-gradient(rgba(26, 35, 126, 0.8), rgba(13, 71, 161, 0.8)), url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      color: var(--white);
+      text-align: center;
+      padding-top: 80px;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-size: 60px;
+      margin-bottom: 20px;
+      color: var(--white);
+      line-height: 1.2;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      margin-bottom: 30px;
+      font-weight: 300;
+      opacity: 0.9;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    /* ====== Services Section ====== */
+    .services {
+      background-color: var(--white);
+    }
+
+    .service-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .card {
+      background-color: var(--white);
+      padding: 40px 30px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+      text-align: center;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-icon {
+      font-size: 50px;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .card-text {
+      color: var(--text-light);
+      font-size: 16px;
+    }
+
+    /* ====== About Section ====== */
+    .about {
+      background-color: var(--light-bg);
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    .about-cta {
+      margin-top: 30px;
+    }
+
+    /* ====== Gallery Section ====== */
+    .gallery {
+      background-color: var(--white);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      height: 300px;
+      background-color: var(--gray);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-item figcaption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    /* ====== Testimonials Section ====== */
+    .testimonials {
+      background-color: var(--light-bg);
+    }
+
+    .testimonial-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .testimonial {
+      background-color: var(--white);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .testimonial blockquote {
+      font-style: italic;
+      margin-bottom: 20px;
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .testimonial blockquote::before {
+      content: '\201C';
+      position: absolute;
+      left: 0;
+      top: -10px;
+      font-size: 50px;
+      color: var(--secondary);
+      font-family: serif;
+      line-height: 1;
+    }
+
+    .client-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .client-name {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .client-title {
+      font-size: 14px;
+      color: var(--text-light);
+    }
+
+    /* ====== Booking Section ====== */
+    .booking {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .booking .section-title,
+    .booking .section-subtitle {
+      color: var(--white);
+    }
+
+    .booking .section-title::after {
+      background-color: var(--white);
+    }
+
+    .booking-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 15px;
+      border-radius: 4px;
+      border: none;
+      font-size: 16px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .form-group input[type="date"] {
+      appearance: none;
+    }
+
+    .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      background-size: 15px;
+    }
+
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .booking-form button {
+      grid-column: 1 / -1;
+    }
+
+    /* ====== Contact Section ====== */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      margin-top: 50px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .info-item i {
+      font-size: 20px;
+      color: var(--primary);
+      margin-top: 5px;
+    }
+
+    .info-item a {
+      transition: var(--transition);
+    }
+
+    .info-item a:hover {
+      color: var(--primary);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* ====== Footer ====== */
+    .footer {
+      background-color: var(--primary-dark);
+      color: var(--white);
+      padding: 60px 0 0;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-logo {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: var(--secondary);
+    }
+
+    .footer-title {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: var(--secondary);
+    }
+
+    .footer-links ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links ul li a:hover {
+      color: var(--secondary);
+    }
+
+    .footer-bottom {
+      padding: 20px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background-color: var(--secondary);
+      color: var(--primary-dark);
+      transform: translateY(-3px);
+    }
+
+    /* ====== Responsive Styles ====== */
+    @media (max-width: 992px) {
+      .hero-title {
+        font-size: 48px;
+      }
+      
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-info {
+        order: 2;
+      }
+      
+      .contact-form {
+        order: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 350px;
+        height: 100vh;
+        background-color: var(--primary-dark);
+        flex-direction: column;
+        justify-content: center;
+        padding: 80px 40px;
+        transition: var(--transition);
+        z-index: 1000;
+      }
+      
+      .nav-links.active {
+        right: 0;
+      }
+      
+      .nav-links ul {
+        flex-direction: column;
+      }
+      
+      .nav-links ul li {
+        margin: 15px 0;
+      }
+      
+      .hero-title {
+        font-size: 36px;
+      }
+      
+      .hero-subtitle {
+        font-size: 18px;
+      }
+      
+      .hero-cta {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .booking-form {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .section {
+        padding: 60px 0;
+      }
+      
+      .section-title {
+        font-size: 28px;
+      }
+      
+      .section-subtitle {
+        font-size: 16px;
+      }
+      
+      .card {
+        padding: 30px 20px;
+      }
+      
+      .testimonial-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Animation classes */
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .slide-up {
+      animation: slideUp 0.8s ease-out;
+    }
+
+    @keyframes slideUp {
+      from { 
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Prince Tailor</h1>
-        <p>Your trusted tailor for custom clothing</p>
-    </header>
-
-    <nav>
-        <a href="#services">Services</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <section id="services">
-        <h2>Our Services</h2>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">Prince Tailor</div>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
+      <nav class="nav-links" id="nav-links">
         <ul>
-            <li>Men's & Women's Tailoring</li>
-            <li>Custom Suit & Dress Stitching</li>
-            <li>Alterations & Repairs</li>
-            <li>Embroidery & Design</li>
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li><a href="#booking" class="btn btn-primary">Book Consultation</a></li>
         </ul>
-    </section>
+      </nav>
+    </div>
+  </header>
 
-    <section id="gallery">
-        <h2>Gallery</h2>
-        <img src="tailor1.jpg" alt="Custom Suit">
-        <img src="tailor2.jpg" alt="Handmade Dress">
-    </section>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title slide-up">WELCOME TO PRINCE TAILOR</h1>
+        <p class="hero-subtitle fade-in">Women's Clothing Tailored to Perfection</p>
+        <div class="hero-cta">
+          <a href="#services" class="btn btn-primary slide-up">Discover Our Craft</a>
+          <a href="#booking" class="btn btn-outline slide-up">Book Appointment</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>📍 ranoli, Vadodara Gujarat</p>
-        <p>📞 +91 12345 67890</p>
-        <p>📧 princetailor@email.com</p>
-    </section>
+  <!-- Services Section -->
+  <section id="services" class="services section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">Our Expertise</p>
+        <h2 class="section-title">Tailoring Services</h2>
+      </div>
+      <div class="service-cards">
+        <article class="card fade-in">
+          <div class="card-icon">
+            <i class="fas fa-scissors"></i>
+          </div>
+          <h3 class="card-title">Bespoke Tailoring</h3>
+          <p class="card-text">Custom-made garments crafted to your exact measurements and style preferences with premium fabrics.</p>
+        </article>
+        
+        <article class="card fade-in" style="animation-delay: 0.2s;">
+          <div class="card-icon">
+            <i class="fas fa-tshirt"></i>
+          </div>
+          <h3 class="card-title">Precision Alterations</h3>
+          <p class="card-text">Expert alterations to ensure every garment fits you perfectly, from hemming to complete reshaping.</p>
+        </article>
+        
+        <article class="card fade-in" style="animation-delay: 0.4s;">
+          <div class="card-icon">
+            <i class="fas fa-rings-wedding"></i>
+          </div>
+          <h3 class="card-title">Bridal Couture</h3>
+          <p class="card-text">Exclusive wedding dresses and trousseau designed to make your special day unforgettable.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <p>© 2025 Prince Tailor. All Rights Reserved.</p>
-    </footer>
+  <!-- About Section -->
+  <section id="about" class="about section">
+    <div class="container">
+      <div class="about-content">
+        <div class="section-header">
+          <p class="section-subtitle">Our Story</p>
+          <h2 class="section-title">Master Tailors Since 1995</h2>
+        </div>
+        <div class="about-text">
+          <p>Founded by master tailor Rajesh Patel, Prince Tailor combines traditional craftsmanship with contemporary design. Each garment is a testament to our dedication to quality and attention to detail.</p>
+          <p>Our atelier in Mumbai has been dressing discerning clients for nearly three decades, creating pieces that stand the test of time both in style and construction.</p>
+        </div>
+        <div class="about-cta">
+          <a href="#gallery" class="btn btn-outline">View Our Portfolio</a>
+        </div>  
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="gallery section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">Our Creations</p>
+        <h2 class="section-title">Tailoring Gallery</h2>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-item fade-in">
+          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Custom tailored dress" loading="lazy">
+          <figcaption>Evening Gown Collection</figcaption>
+        </figure>
+        <figure class="gallery-item fade-in" style="animation-delay: 0.1s;">
+          <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Bridal wear" loading="lazy">
+          <figcaption>Bridal Couture</figcaption>
+        </figure>
+        <figure class="gallery-item fade-in" style="animation-delay: 0.2s;">
+          <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Designer outfit" loading="lazy">
+          <figcaption>Designer Line</figcaption>
+        </figure>
+        <figure class="gallery-item fade-in" style="animation-delay: 0.3s;">
+          <img src="https://images.unsplash.com/photo-1554412933-514a83d2f3c8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Festive wear" loading="lazy">
+          <figcaption>Festive Collection</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-subtitle">Client Stories</p>
+        <h2 class="section-title">What Our Clients Say</h2>
+      </div>
+      <div class="testimonial-cards">
+        <div class="testimonial slide-up">
+          <blockquote>
+            "Prince Tailor transformed my wedding dress into a dream come true. The attention to detail was exceptional."
+          </blockquote>
+          <div class="client-info">
+            <p class="client-name">Priya Sharma</p>
+            <p class="client-title">Bride, December 2022</p>
+          </div>
+        </div>
+        <div class="testimonial slide-up" style="animation-delay: 0.2s;">
+          <blockquote>
+            "I've never had clothes fit me so perfectly. Their tailoring is worth every penny for the confidence it gives me."
+          </blockquote>
+          <div class="client-info">
+            <p class="client-name">Ananya Patel</p>
+            <p class="client-title">Corporate Executive</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Section -->
+  <section id="booking" class="booking section">
+    <div class="container">
+      <div class="booking-content">
+        <div class="section-header">
+          <p class="section-subtitle">Schedule An Appointment</p>
+          <h2 class="section-title">Book Your Consultation</h2>
+        </div>
+        <form id="booking-form" class="booking-form">
+          <div class="form-group">
+            <input type="text" placeholder="Your Name" required />
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Email Address" required />
+          </div>
+          <div class="form-group">
+            <input type="tel" placeholder="Phone Number" required />
+          </div>
+          <div class="form-group">
+            <select required>
+              <option value="" disabled selected>Service Required</option>
+              <option>Bespoke Tailoring</option>
+              <option>Alterations</option>
+              <option>Bridal Wear</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input type="date" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Request Appointment</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact section">
+    <div class="container">
+      <div class="contact-content">
+        <div class="section-header">
+          <p class="section-subtitle">Get In Touch</p>
+          <h2 class="section-title">Contact Us</h2>
+        </div>
+        <div class="contact-container">
+          <div class="contact-info">
+            <div class="info-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <address>123 Fashion Avenue, Bandra West, Mumbai 400050</address>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-phone-alt"></i>
+              <a href="tel:+919876543210">+91 98765 43210</a>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:hello@princetailor.com">hello@princetailor.com</a>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-clock"></i>
+              <p>Mon-Sat: 10AM - 8PM<br>Sunday: Closed</p>
+            </div>
+          </div>
+          <form class="contact-form">
+            <div class="form-group">
+              <input type="text" placeholder="Your Name" required />
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Your Email" required />
+            </div>
+            <div class="form-group">
+              <input type="tel" placeholder="Phone Number" />
+            </div>
+            <div class="form-group">
+              <textarea placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-about">
+          <h3 class="footer-logo">Prince Tailor</h3>
+          <p>Crafting exceptional women's wear with precision and passion since 1995.</p>
+        </div>
+        <div class="footer-links">
+          <h4 class="footer-title">Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4 class="footer-title">Contact</h4>
+          <address>123 Fashion Avenue<br>Bandra West, Mumbai 400050</address>
+          <a href="tel:+919876543210">+91 98765 43210</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year">2023</span> Prince Tailor. All rights reserved.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile Menu Toggle
+      const menuToggle = document.getElementById('menu-toggle');
+      const navLinks = document.getElementById('nav-links');
+      const navItems = document.querySelectorAll('.nav-link');
+
+      menuToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+      });
+
+      // Close menu when clicking on nav items
+      navItems.forEach(item => {
+        item.addEventListener('click', function() {
+          menuToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
+
+      // Sticky header on scroll
+      window.addEventListener('scroll', function() {
+        const header = document.querySelector('.header');
+        header.classList.toggle('sticky', window.scrollY > 50);
+      });
+
+      // Form submission handling
+      const forms = document.querySelectorAll('form');
+      forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Get form data
+          const formData = new FormData(this);
+          const formValues = Object.fromEntries(formData.entries());
+          
+          // Here you would typically send the data to a server
+          console.log('Form submitted:', formValues);
+          
+          // Show success message
+          alert('Thank you for your message. We will contact you shortly.');
+          
+          // Reset form
+          this.reset();
+        });
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            // Close mobile menu if open
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // Calculate scroll position (accounting for fixed header)
+            const headerHeight = document.querySelector('.header').offsetHeight;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Add current year to footer
+      const yearElement = document.getElementById('current-year');
+      if (yearElement) {
+        const currentYear = new Date().getFullYear();
+        yearElement.textContent = currentYear;
+      }
+
+      // Intersection Observer for animations
+      const animateOnScroll = () => {
+        const elements = document.querySelectorAll('.fade-in, .slide-up');
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+
+        elements.forEach(element => {
+          observer.observe(element);
+        });
+      };
+
+      // Initialize animations
+      animateOnScroll();
+    });
+  </script>
 </body>
 </html>
